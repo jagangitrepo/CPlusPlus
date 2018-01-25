@@ -22,12 +22,12 @@ class SP
             
         SP& operator =(const SP& refObj)
         {
-            if(*this != refObj)
+            if(this != &refObj)
             {
                 this->refObjPtr = refObj.refObjPtr;
                 count++;
             }
-            return refObj;
+            return *this;
         }
         ~SP(){ count--; if(count==0) delete(refObjPtr); }
         T& operator *()
