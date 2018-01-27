@@ -22,6 +22,9 @@ bool IsSysLittleEndiness()
 
 int main()
 {
-  IsSysLittleEndiness();
+  if(IsSysLittleEndiness())
+    cout<<"Little Endine"<<endl;
+  else
+    cout<<"Big Endine"<<endl;
   return 0;
 }
