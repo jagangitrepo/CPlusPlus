@@ -1,0 +1,22 @@
+1. Unique Pointer:
+    Ownership of the pointed reference will be only one. 
+ Eg:
+  unique_ptr<T> uPtr(new T());
+  unique_ptr<T> uPtr1 = move(uPtr); // move the ownership to other unique pointer. And make the previous one to null.
+
+2. Shared Pointer:
+    Ownership will be shared and reference couted.
+  Eg:
+  shared_ptr<T> sptr(new T());
+  sptr.get(); // Get the pointed object reference.
+  sptr.use_count(); // Get the total number of referred object count.
+  sptr.reset(new T()); // release existing and assign new.  
+  
+3. Weak Pointer:
+    Shared pointer without the reference count. Owner ship will not be shared.
+Eg:
+  weak_ptr<T> wptr(sptr);
+  wptr.lock() // give the shared pointer object reference.
+  wptr.operator() boolean // check if the pointed object is avail or not.
+  
+ 
