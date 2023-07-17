@@ -10,6 +10,7 @@ project "CPlusPlus"
 
    files { 
       "main.cpp",
+      "include/**.h",
       "Pointers&References/**.*"
    }
 

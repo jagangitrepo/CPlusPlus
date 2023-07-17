@@ -1,4 +1,5 @@
 #include "common.h"
+#include "Sample.h"
 
 /**
  * Reference_Counter - Maintain the atomic counter variable 
@@ -101,6 +102,8 @@ public:
 
 void SharedPointer()
 {
+  SP<Sample> samplesp(new Sample(10));
+
   SP<int> sp(new int(100));
   {
     SP<int> sp1;
