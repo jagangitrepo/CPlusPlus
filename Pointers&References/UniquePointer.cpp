@@ -75,9 +75,9 @@ public:
 void UniquePointer()
 {
   std::cout << "UniquePointer Start" << std::endl;
-  UP<Sample> sampleptr1(new Sample(400));
+  UP<Sample<char>> sampleptr1(new Sample<char>('J'));
   std::cout << (sampleptr1)->getData() << std::endl;
-  UP<Sample> sampleptr2;
+  UP<Sample<char>> sampleptr2;
 
   // Non copyable
   //sampleptr2 = sampleptr1; 

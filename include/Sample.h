@@ -1,46 +1,54 @@
 #pragma once
 #include <iostream>
 
+template<class T>
 class Sample
 {
-  int data {0};
+  T* data {nullptr};
+
   public:
-  Sample():data(0)
+  Sample():data(nullptr)
   {
     std::cout<<"Sample()"<<std::endl;
   }
-  Sample(int data_):data(data_)
+
+  Sample(T data_):data(new T(data_))
   {
     std::cout<<"Sample(int)"<<std::endl;
   }
+
   Sample(const Sample& sobj) noexcept
   {
     if (this != &sobj)
     {
       std::cout << "Sample(const Sample&)" << std::endl;
-      this->data = sobj.data;
+      if(sobj.data)
+        this->data = new T(*sobj.data); // Deep copy the data
     }
   }
   Sample& operator=(const Sample& sobj) noexcept
   {
-    if (this != std::addressof(sobj))
+    if (this != &sobj)
     {
-      std::cout << "Sample& operator(const Sample&)" << std::endl;
-      this->data = sobj.data;
+      std::cout << "Sample& operator=(const Sample&)" << std::endl;
+      if(sobj.data)
+        this->data = new T(*sobj.data); // Deep copy the data
     }
     return *this;
   }
   Sample(Sample&& sobj) noexcept
   {
     std::cout<<"Sample(Sample&&)"<<std::endl;
-    this->data = std::exchange(sobj.data, 0);
+    delete (this->data);
+    this->data = std::exchange(sobj.data, nullptr);
   }
   Sample& operator=(Sample&& sobj) noexcept
   {
-    if (this != std::addressof(sobj))
+    if (this != &sobj)
     {
-      std::cout << "Sample& operator(Sample&&)" << std::endl;
-      this->data = std::exchange(sobj.data, 0);
+      std::cout << "Sample& operator=(Sample&&)" << std::endl;
+      delete (this->data);
+      this->data = std::exchange(sobj.data, nullptr);
     }
     return *this;
   }
@@ -49,8 +57,8 @@ class Sample
     std::cout<<"~Sample()"<<std::endl;
   }
 
-  int getData() const noexcept
+  T getData() const noexcept
   {
-    return data;
+    return *data;
   }
 };

@@ -103,7 +103,7 @@ public:
 void SharedPointer()
 {
   std::cout << "SharedPointer Start" << std::endl;
-  SP<Sample> samplesp(new Sample(10));
+  SP<Sample<int>> samplesp(new Sample<int>(100));
 
   SP<int> sp(new int(100));
   {

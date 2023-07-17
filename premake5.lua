@@ -11,6 +11,7 @@ project "CPlusPlus"
    files { 
       "main.cpp",
       "include/**.h",
+      "Structures&Classes/**.*",
       "Pointers&References/**.*"
    }
 
