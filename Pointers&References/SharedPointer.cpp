@@ -102,6 +102,7 @@ public:
 
 void SharedPointer()
 {
+  std::cout << "SharedPointer Start" << std::endl;
   SP<Sample> samplesp(new Sample(10));
 
   SP<int> sp(new int(100));
@@ -123,4 +124,5 @@ void SharedPointer()
   std::cout << "SP<int>: " << *sp << std::endl;
   std::cout << "SP<int>: " << &sp << std::endl;
   std::cout << "SP<int>: RefCount " << sp.getRefCount() << std::endl;
+  std::cout << "SharedPointer End" << std::endl;
 }

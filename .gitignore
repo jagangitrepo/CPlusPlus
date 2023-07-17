@@ -9,3 +9,6 @@
 obj/
 bin/
 .vs/
+
+# Files
+.vscode/*
