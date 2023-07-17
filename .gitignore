@@ -1,0 +1,11 @@
+# Executables
+*.exe
+
+# Solution Files
+*.vcxproj*
+*.sln
+
+# Folders
+obj/
+bin/
+.vs/
