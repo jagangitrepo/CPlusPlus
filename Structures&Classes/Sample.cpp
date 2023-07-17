@@ -21,6 +21,7 @@ Sample<T> createDefaultSample(ARGS&& args)
 
 void RunSample()
 {
+  std::cout << "Sample Start" << std::endl;
   Sample<int> sp1; // Default Constructor
   Sample<int> sp2(sp1); // Copy Constructor
   
@@ -36,4 +37,5 @@ void RunSample()
 
   auto& obj2 = createSample<char>('K');
   std::cout << "createSample: " << obj2.getData() << std::endl;
+  std::cout << "Sample End" << std::endl;
 }
